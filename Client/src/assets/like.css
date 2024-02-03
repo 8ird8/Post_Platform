@@ -1,0 +1,49 @@
+.heart-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .heart-icon {
+    color: #ccc;
+    font-size: 2em;
+    transition: color 0.3s ease;
+  }
+  
+  .heart-icon.liked {
+    color: #e0245e;
+    animation: pulse 0.3s ease;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  
+
+.sidebar-enter {
+  width: 20px;
+}
+
+.sidebar-enter-active {
+  width: 200px; /* Adjust as needed */
+  transition: width 300ms ease-in-out;
+}
+
+.sidebar-exit {
+  width: 200px;
+}
+
+.sidebar-exit-active {
+  width: 20px;
+  transition: width 300ms ease-in-out;
+}
