@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 const authenticateToken = require("./middlewares/auth");
 const fs = require("fs").promises;
 const path = require("path");
-const { userInfo } = require("os");
+
 
 const app = express();
 

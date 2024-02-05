@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./assets/like.css";
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import SideBar from "./sidebar";
@@ -30,6 +31,7 @@ const MyPosts = () => {
   const { userInfo, fetchUserInfo } = useContext(UserContext);
   const { userId } = useParams();
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(true);
   // const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const MyPosts = () => {
           if (res.data.posts.length > 0) {
             setPosts(res.data.posts);
             fetchPosts();
-            
+            setLoading(false);
           } else {
             setMessage("No Posts Found");
           }
@@ -61,7 +63,7 @@ const MyPosts = () => {
     };
     fetchPosts();
     fetchUserInfo();
-  }, [posts.length]);
+  }, [posts]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -71,47 +73,38 @@ const MyPosts = () => {
     return format(date, "MMMM dd 'at' p");
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-start">
+        <div className="fixed  h-screen  ">
+          <SideBar />
+        </div>
+        <div className="loader-container m-auto flex justify-center items-center h-screen">
+          <div className="loader">
+            <img src="../public/shape.png" alt="dd" className="w-16 h-16"/>
+            
+            
+          </div>
+        </div>
+        ;
+      </div>
+    );
+  }
 
-  //   return (
-  //     <div  className="flex justify-start">
-  //         <SideBar />
-  //         {message && <p className=" mt-6  w-full text-5xl text-center font-600 ">{message}</p>}
-  //         <div className="flex m-auto justify-center w-1/2 mt-8">
-
-  //         <div className=" grid  gap-10   " >
-
-  //           {posts.map((post) => (
-  //             <div key={post._id} className="post-container">
-  //               <Card
-  //                 title={post.title}
-  //                 description={post.description}
-  //                 imageUrl={`http://localhost:4000/uploads/${post.image}`}
-  //                 creator_name={post.username}
-  //                 post = {post}
-  //                 CurrentuserId={userInfo.userId}
-  //                 creatorId= {post.creator._id}
-  //                 avatarUrl={`http://localhost:4000/uploads/${post.creator.avatar}`}
-  //               />
-
-  //             </div>
-  //           ))}
-
-  //         </div>
-  //         </div>
-  //     </div>
-
-  //   )
   return (
     <div className="flex justify-start">
       <div className="flex  ">
-      <div className="fixed  h-screen  ">
+        <div className="fixed  h-screen  ">
           <SideBar />
         </div>
         {posts.length > 0 && (
           <div className="flex-grow m-auto justify-center w-1/2 mt-8">
             <div className="grid gap-10">
               {posts.map((post) => (
-                <div key={post._id} className="post-container relative left-16 mt-20 w-1/2 m-auto">
+                <div
+                  key={post._id}
+                  className="post-container relative mb-8 left-16 mt-20 w-1/2 m-auto"
+                >
                   <Card
                     title={post.title}
                     description={post.description}
@@ -131,18 +124,16 @@ const MyPosts = () => {
       </div>
       <div className="mx-auto ">
         {message && (
-          <p className="flex-grow mt-6 w-full text-5xl text-center font-600">
-            {message}
-          </p>
-        )}
-        {posts.length <= 0 && (
-        <Link to="/add">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 border border-blue-500 hover:border-blue-700 rounded"
-          >
-            Create Your First Post
-          </button>
-        </Link>
+          <div>
+            <p className="flex-grow mt-16 w-full text-5xl text-center font-600">
+              {message}
+            </p>
+            <Link to="/add">
+              <button className="bg-indigo-900 mt-4 text-white  hover:bg-indigo-700 font-semibold py-2 px-4 border border-indigo-500  rounded-xl">
+                Create Your First Post
+              </button>
+            </Link>
+          </div>
         )}
       </div>
     </div>

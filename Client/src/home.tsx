@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-// import { useNavigate} from "react-router-dom";
+import "./assets/like.css";
 import Card from "./card";
 import SideBar from "./sidebar";
 import { UserContext } from "./Usercontext";
@@ -28,6 +28,7 @@ interface Post {
 function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const { userInfo, fetchUserInfo } = useContext(UserContext);
+  const [loading, setLoading] = useState(true );
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -39,6 +40,7 @@ function Home() {
         if (res.status === 200 && res.data.posts) {
           if (res.data.posts.length > 0) {
             setPosts(res.data.posts);
+            setLoading(false);
           }
         } else {
           console.error(
@@ -57,7 +59,22 @@ function Home() {
     return format(new Date(dateString), "MMMM dd 'at' p");
   };
 
-  
+  if (loading) {
+    return (
+      <div className="flex justify-start">
+        <div className="fixed  h-screen  ">
+          <SideBar />
+        </div>
+        <div className="loader-container m-auto flex justify-center items-center h-screen">
+          <div className="loader">
+            <img src="../public/shape.png" alt="dd" className="w-16 h-16"/>
+            
+          </div>
+        </div>
+        ;
+      </div>
+    );
+  }
 
   return (
     <>
@@ -69,7 +86,7 @@ function Home() {
           {/* {message && <p className="border bg-red-400">{message}</p>} */}
           <div className="  gap-10 m  grid ">
             {posts.map((post) => (
-              <div key={post._id} className="post-container">
+              <div key={post._id} className="post-container mb-8">
                 <Card
                   title={post.title}
                   description={post.description}

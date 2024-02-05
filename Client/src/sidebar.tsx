@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "./Usercontext";
 
 
 
 
 const SideBar = () => {
-  const [open, setOpen] = useState(true);
-  const { currentUserInfo, userInfo, fetchCurrentUser, fetchUserInfo } =
-    useContext(UserContext);
+  const [open, setOpen] = useState(false);
+  const { currentUserInfo, userInfo, fetchCurrentUser, fetchUserInfo } = useContext(UserContext);
+  const location = useLocation();
+
  
   const navigate = useNavigate();
 
@@ -94,6 +95,9 @@ const SideBar = () => {
 
           <ul className="pt-6 ">
             {Menus.map((Menu, index) => {
+              const isActive = location.pathname === Menu.path ;
+
+              
               if (Menu.title === "Logout") {
                 return (
                   <li
@@ -101,7 +105,7 @@ const SideBar = () => {
                     className={`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 
                   ${Menu.gap ? "mt-56 " : "mt-2"} ${
                       index === 0 && "bg-light-white"
-                    }`}
+                    } ${isActive ? "bg-gray-300" : ""}`}
                     onClick={Menu.onClick}
                   >
                     <img
@@ -123,10 +127,10 @@ const SideBar = () => {
                 return (
                   <Link to={Menu.path} key={index}>
                     <li
-                      className={`flex rounded-md p-2 cursor-pointer capitalize text-sm items-center gap-x-4 
+                      className={`flex rounded-md p-2 hover:bg-gray-100 cursor-pointer capitalize text-sm items-center gap-x-4 
                     ${Menu.gap ? "mt-56" : "mt-2"} ${
                         index === 0 && "bg-light-white"
-                      }`}
+                      } ${isActive ? "bg-gray-300" : ""}`}
                     >
                       <img
                         src={`${Menu.src}`}
