@@ -16,6 +16,7 @@ const UpdateUser = ({ userId, CurrentUsername }: UpdateProp) => {
   const [password, setPassword] = useState("");
   // const [Confirmpass, setCpassword] = useState("");
   const [bio, setBio] = useState("");
+  const AssetsUrl = import.meta.env.VITE_ASSETS_URL;
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [message, setMessage] = useState("");
