@@ -20,7 +20,7 @@ const AddPost = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:4000/add", formData, {
+      const res = await axios.post("https://platform-posts.onrender.com/add", formData, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
