@@ -17,7 +17,7 @@ const UpdatePost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/posts/${postId}`, {
+        const response = await axios.get(`https://platform-posts.onrender.com/posts/${postId}`, {
           withCredentials: true,
         });
         if (response.status === 200 && response.data.post) {
@@ -53,7 +53,7 @@ const UpdatePost = () => {
     }
 
     try {
-      const res = await axios.put(`http://localhost:4000/updatePost/${postId}`, formData, {
+      const res = await axios.put(`https://platform-posts.onrender.com/updatePost/${postId}`, formData, {
         withCredentials: true,
       });
       if (res.status === 200) {
