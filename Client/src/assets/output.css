@@ -586,13 +586,27 @@ body{
   top: 2.25rem;
 }
 
+.left-14{
+  left: 3.5rem;
+}
+
 .m-auto{
   margin: auto;
+}
+
+.mx-6{
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-2{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .my-auto{
@@ -952,6 +966,11 @@ body{
 .bg-gray-500{
   --tw-bg-opacity: 1;
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.bg-indigo-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
 }
 
 .bg-indigo-900{

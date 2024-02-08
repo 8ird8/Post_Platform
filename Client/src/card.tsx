@@ -32,6 +32,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const showDellete = CurrentuserId === creatorId;
   const userHasLiked = post.likes.includes(CurrentuserId);
+  const AssetsUrl = import.meta.env.VITE_ASSETS_URL;
  
 
   return (
@@ -76,7 +77,7 @@ const Card: React.FC<CardProps> = ({
                   className="  rounded-xl "
                 >
                   <img
-                    src="../public/pencil.png"
+                    src={`${AssetsUrl}/pencil.png`}
                     alt="edit"
                     className="w-6 h-6"
                   />

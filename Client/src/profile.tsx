@@ -14,7 +14,7 @@ const ProfilePage = () => {
 
     
     
-  }, [userInfo.userId]);
+  }, [currentUserInfo]);
 
   const handleAvatarChange = async (e: any) => {
     const file = e.target.files[0];

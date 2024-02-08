@@ -11,7 +11,8 @@ const SideBar = () => {
   const { currentUserInfo, userInfo, fetchCurrentUser, fetchUserInfo } = useContext(UserContext);
   const location = useLocation();
 
- 
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const AssetsUrl = import.meta.env.VITE_ASSETS_URL;
   const navigate = useNavigate();
 
   const handleLogout = async (e: any) => {
@@ -33,7 +34,7 @@ const SideBar = () => {
     }
   };
   const profileImage = currentUserInfo
-    ? `http://localhost:4000/uploads/${currentUserInfo.avatar}`
+    ? `${baseUrl}/uploads/${currentUserInfo.avatar}`
     : "";
   const profileName = currentUserInfo ? currentUserInfo.username : "";
   const pathto = `/myposts/${userInfo.userId}`;
@@ -45,16 +46,16 @@ const SideBar = () => {
       path: "/profile",
       isProfile: true,
     },
-    { title: "Home", src: "../public/home.png", path: "/home" },
-    { title: "Add Post", src: "../public/upload.png", path: "/add" },
-    { title: "My Posts", src: "../public/mine.png", path: pathto },
+    { title: "Home", src: `${AssetsUrl}/home.png`, path: "/home" },
+    { title: "Add Post", src: `${AssetsUrl}/upload.png`, path: "/add" },
+    { title: "My Posts", src: `${AssetsUrl}/mine.png`, path: pathto },
     {
       title: "User",
-      src: "../public/user.png",
+      src: `${AssetsUrl}/user.png`,
       path: "/updateUser",
       gap: true,
     },
-    { title: "Logout", src: "../public/logout.png", onClick: handleLogout },
+    { title: "Logout", src: `${AssetsUrl}/logout.png`, onClick: handleLogout },
   ];
   const token = localStorage.getItem("token");
   useEffect(() => {
@@ -72,14 +73,14 @@ const SideBar = () => {
           } bg-dark-purple h-screen p-5 pt-8 relative duration-300 transition-all`} 
         >
           <img
-            src="../public/control.png"
+            src={`${AssetsUrl}/control.png`}
             className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
           />
           <div className="flex gap-x-4 items-center">
             <img
-              src="../public/logo.png"
+              src={`${AssetsUrl}/logo.png`}
               className={`cursor-pointer duration-500 ${
                 open && "rotate-[360deg]"
               }`}

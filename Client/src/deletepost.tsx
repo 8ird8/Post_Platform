@@ -8,6 +8,7 @@ interface DeleteButtonProps {
 
 const DeleteButton: React.FC<DeleteButtonProps> = ({ postId }) => {
   const navigate = useNavigate();
+  const AssetsUrl = import.meta.env.VITE_ASSETS_URL;
   const handleDelete = async () => {
     try {
       const res = await axios.delete(`http://localhost:4000/posts/${postId}`, {
@@ -28,7 +29,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ postId }) => {
 
   return (
     <button onClick={handleDelete}>
-      <img src="../public/trash.png" alt="trash" className="w-6 h-6" />
+      <img src={`${AssetsUrl}/trash.png`} alt="trash" className="w-6 h-6" />
     </button>
   );
 };

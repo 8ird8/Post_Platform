@@ -5,6 +5,8 @@ import Card from "./card";
 import SideBar from "./sidebar";
 import { UserContext } from "./Usercontext";
 import { format } from "date-fns";
+import CardSkeleton from "./skeleton";
+// import Skeleton from "./skeleton";
 
 interface Post {
   _id: string;
@@ -29,11 +31,12 @@ function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const { userInfo, fetchUserInfo } = useContext(UserContext);
   const [loading, setLoading] = useState(true );
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/posts", {
+        const res = await axios.get(`${baseUrl}/api/posts`, {
           withCredentials: true,
         });
 
@@ -65,11 +68,8 @@ function Home() {
         <div className="fixed  h-screen  ">
           <SideBar />
         </div>
-        <div className="loader-container m-auto flex justify-center items-center h-screen">
-          <div className="loader">
-            <img src="../public/shape.png" alt="dd" className="w-16 h-16"/>
-            
-          </div>
+        <div className="flex justify-center m-auto items-center">
+          <CardSkeleton/>
         </div>
         ;
       </div>
@@ -90,12 +90,12 @@ function Home() {
                 <Card
                   title={post.title}
                   description={post.description}
-                  imageUrl={`http://localhost:4000/uploads/${post.image}`}
+                  imageUrl={`${baseUrl}/uploads/${post.image}`}
                   creator_name={post.creator.username}
                   post={post}
                   CurrentuserId={userInfo.userId}
                   creatorId={post.creator._id}
-                  avatarUrl={`http://localhost:4000/uploads/${post.creator.avatar}`}
+                  avatarUrl={`${baseUrl}/uploads/${post.creator.avatar}`}
                   created_at={formatDate(
                     post.createdAt ? post.createdAt : "yyyy-MM-dd"
                   )}
