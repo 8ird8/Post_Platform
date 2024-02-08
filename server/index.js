@@ -14,7 +14,7 @@ const path = require("path");
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://post-platform-weld.vercel.app",
   methods: ["POSt", "GET", "DELETE", "PUT"],
   credentials: true,
 };
