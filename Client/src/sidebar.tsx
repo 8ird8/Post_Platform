@@ -19,7 +19,7 @@ const SideBar = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.get("http://localhost:4000/logout", {
+      const res = await axios.get("https://platform-posts.onrender.com/logout", {
         withCredentials: true,
       });
 
