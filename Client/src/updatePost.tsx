@@ -12,6 +12,7 @@ const UpdatePost = () => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const { fetchUserInfo } = useContext(UserContext);
+  const AssetsUrl = import.meta.env.VITE_ASSETS_URL;
   
 
   useEffect(() => {
