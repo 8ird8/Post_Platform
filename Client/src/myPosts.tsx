@@ -41,7 +41,7 @@ const MyPosts = () => {
     const fetchPosts = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4000/api/posts/user/${userId}`,
+          `https://platform-posts.onrender.com/api/posts/user/${userId}`,
           {
             withCredentials: true,
           }
