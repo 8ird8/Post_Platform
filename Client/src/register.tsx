@@ -22,7 +22,7 @@ function SignUp() {
     
   
     try {
-      const res = await axios.post("http://localhost:4000/register", formData, {
+      const res = await axios.post("https://platform-posts.onrender.com/register", formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
