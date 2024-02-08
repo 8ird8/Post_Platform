@@ -12,7 +12,7 @@ function Login() {
   const handleSumbit = async (e: any) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/login", {
+      const res = await axios.post("https://platform-posts.onrender.com/login", {
         email,
         password,
         
