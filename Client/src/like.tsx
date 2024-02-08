@@ -16,7 +16,7 @@ const LikeButton = ({ postId, userLiked, TotalLikes }: Props) => {
   const toggleLike = async () => {
 
     try {
-      const res = await axios.post(`http://localhost:4000/api/posts/${postId}/like`,  {
+      const res = await axios.post(`https://platform-posts.onrender.com/api/posts/${postId}/like`,  {
         
         
       },{withCredentials: true});
