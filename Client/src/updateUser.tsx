@@ -36,7 +36,7 @@ const UpdateUser = ({ userId, CurrentUsername }: UpdateProp) => {
 
     try {
       const res = await axios.put(
-        `http://localhost:4000/update/${userId}`,
+        `https://platform-posts.onrender.com/update/${userId}`,
         formData,
         { withCredentials: true }
       );
