@@ -11,7 +11,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ postId }) => {
   const AssetsUrl = import.meta.env.VITE_ASSETS_URL;
   const handleDelete = async () => {
     try {
-      const res = await axios.delete(`http://localhost:4000/posts/${postId}`, {
+      const res = await axios.delete(`https://platform-posts.onrender.com/posts/${postId}`, {
         withCredentials: true,
       });
       if (res.status === 403) {
