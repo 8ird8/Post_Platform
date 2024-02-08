@@ -36,7 +36,7 @@ export const UserProvider = ({ children }: Props) => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        const res = await axios.get("http://localhost:4000/api/userId", {
+        const res = await axios.get("https://platform-posts.onrender.com/api/userId", {
           withCredentials: true,
         });
   
@@ -55,7 +55,7 @@ export const UserProvider = ({ children }: Props) => {
   const fetchCurrentUser = useCallback(async () => {
     if (userInfo.userId) {
       try {
-        const res = await axios.get(`http://localhost:4000/api/userInfo/${userInfo.userId}`, {
+        const res = await axios.get(`https://platform-posts.onrender.com/api/userInfo/${userInfo.userId}`, {
           withCredentials: true,
         });
 
