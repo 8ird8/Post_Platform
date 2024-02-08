@@ -6,6 +6,7 @@ import axios from "axios";
 const ProfilePage = () => {
   const { userInfo, currentUserInfo,fetchCurrentUser, fetchUserInfo } = useContext(UserContext);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const AssetsUrl = import.meta.env.VITE_ASSETS_URL;
 
   useEffect(() => {
     
@@ -53,7 +54,7 @@ const ProfilePage = () => {
           <div className="flex flex-col">
             <div className="flex justify-center relative">
               <img
-                src={`http://localhost:4000/uploads/${currentUserInfo?.avatar}`}
+                src={`${AssetsUrl}/uploads/${currentUserInfo?.avatar}`}
                 alt="Avatar"
                 className="w-32 h-32 rounded-full object-cover border-2 border-gray-300"
               />
