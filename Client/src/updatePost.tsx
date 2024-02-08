@@ -106,7 +106,7 @@ const UpdatePost = () => {
               <span className="mr-2 text-indigo-900 font-600">
                 Upload Image
               </span>
-              <img src="../public/images.png" alt="image" className="w-8 h-8" />
+              <img src={`${AssetsUrl}/images.png`} alt="image" className="w-8 h-8" />
               <input
                 type="file"
                 className="hidden"
