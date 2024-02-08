@@ -15,7 +15,7 @@ const app = express();
 
 const corsOptions = {
   origin: "https://post-platform-weld.vercel.app",
-  methods: ["POSt", "GET", "DELETE", "PUT"],
+ methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
 app.use(cors(corsOptions));
