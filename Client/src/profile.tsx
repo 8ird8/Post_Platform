@@ -25,7 +25,7 @@ const ProfilePage = () => {
       try {
         const userId = userInfo?.userId; 
         const res = await axios.put(
-          `http://localhost:4000/update/${userId}`,
+          `https://platform-posts.onrender.com/update/${userId}`,
           formData,
           { withCredentials: true }
         );
