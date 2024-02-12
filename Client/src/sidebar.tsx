@@ -7,7 +7,7 @@ import { UserContext } from "./Usercontext";
 
 
 const SideBar = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const { currentUserInfo, userInfo, fetchCurrentUser, fetchUserInfo } = useContext(UserContext);
   const location = useLocation();
 
