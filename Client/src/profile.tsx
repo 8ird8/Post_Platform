@@ -7,6 +7,8 @@ const ProfilePage = () => {
   const { userInfo, currentUserInfo,fetchCurrentUser, fetchUserInfo } = useContext(UserContext);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const baseUrl = import.meta.env.VITE_BASE_URL;
+  const token = localStorage.getItem('token');
+
 
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const ProfilePage = () => {
 
     
     
-  }, [currentUserInfo]);
+  }, [currentUserInfo, token]);
 
   const handleAvatarChange = async (e: any) => {
     const file = e.target.files[0];
